@@ -1,5 +1,5 @@
 # rsmeter makefile
-# $Amigan: rsmeter/src/Makefile,v 1.2 2004/10/27 23:56:15 dcp1990 Exp $
+# $Amigan: rsmeter/src/Makefile,v 1.3 2004/10/27 23:57:41 dcp1990 Exp $
 LDFLAGS=-lncurses
 CFLAGS=-Wall -g -ansi
 CC=cc
@@ -11,4 +11,4 @@ drawing.o: rsmeter.h
 main.o: rsmeter.h
 	${CC} ${CFLAGS} -DUSEOLDWAY -c -o main.o main.c
 clean:
-	rm -f *.o rsmeter rsmeter_non *.core checkrts
+	rm -f *.o rsmeter  *.core 
