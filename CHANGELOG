@@ -1,0 +1,15 @@
+This is the RSMeter changelog.
+
+~0.1~
+*Initial release
+*Screen handling is flaky
+~0.2~
+*Added grapher. See README.
+*Added Tcl interface. See README.
+*Cleaned up the tree
+*Improved the make system
+*Built with -Wall to get rid of crap
+*Improved the device logic.
+*Registered sf.net project :)
+*Cleaned up the source
+

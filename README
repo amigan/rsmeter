@@ -1,0 +1,38 @@
+This is a package to interface to the RadioShack/Metex 22-168A multimeters.
+
+To build, simply type
+
+	make
+
+and watch it go with my ultra-super -Wall :-).
+
+There are two executables that are built:
+
+rsmeter is an ncurses interface, and is the one with the most features. Please use it.
+Another executable is generated called rsmeter_non, which just spits the output to stdout. It could be used in shell scripts.
+rsmeter_non might only work on FreeBSD, a little less so for rsmeter. (Patches please!)
+Run rsmeter -h for usage. Sorry about documentation being so poor; here are some keys you can use:
+
+'q' - quits the program properly (unlike ^C).
+'s' - stop logging (only works if you enabled logging).
+
+Please note that the logging functions only append. This can be changed in the source.
+
+If you found a bug (and preferably have a patch), email me at dcp1990@cox.net.
+Simply type 'make' to build. There is no install target.
+Any questions? Email the above address.
+Under the GPL. See the 'COPYING' file for details.
+
+There is a Perl script in this distribution to generate graphs from logfile output. It requires the GD::Graph module, available on CPAN. Run it as follows:
+
+	perl/graphlog.pl logfile outpng
+
+where logfile is the log file from RSMeter and outpng is the name of the png to create.
+
+There is also a rudimentary TCL/Tk interface in the tcl directory under the name rsmeter.tcl. Change the top line to reference your wish executable.
+
+Another misc. executable is built called checkrts. Try it if things don't seem to be working; it will tell you if RTS was ever asserted (necessary for the meter to respond).
+
+-Dan Ponte
+http://skynard.flinkpoyd.homeunix.com:88/
+http://rsmeter.sourceforge.net/
