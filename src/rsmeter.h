@@ -10,7 +10,7 @@
 #include <time.h>
 #include <sys/select.h>
 #include <sys/ioctl.h>
-int fd, siz, stat, logging;
+int fd, siz, status, logging;
 FILE* logfil;
 struct tm tim;
 sig_t* than(int s);

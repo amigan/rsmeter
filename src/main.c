@@ -44,9 +44,9 @@ int main(int argc, char* argv[])
 		}
 	if(!sset) usage(argv[0]);
 	setser(argv[0]);
+	initscr();
 	argc -= optind;
 	argv += optind;
-	initscr();
 	cbreak();
 	start_color();
 	keypad(stdscr, TRUE);
@@ -94,11 +94,11 @@ void setser(char* ourname)
 	tr.c_cflag &= ~CSIZE;
 	tr.c_cflag |= CS7;
 	tcsetattr(fd, TCSANOW, &tr);
-	ioctl(fd, TIOCMGET, &stat);
-	stat &= ~TIOCM_RTS;
-	ioctl(fd, TIOCMSET, &stat);
-	ioctl(fd, TIOCMGET, &stat);
-	if(stat & TIOCM_RTS) {
+	ioctl(fd, TIOCMGET, &status);
+	status &= ~TIOCM_RTS;
+	ioctl(fd, TIOCMSET, &status);
+	ioctl(fd, TIOCMGET, &status);
+	if(status & TIOCM_RTS) {
 		fprintf(stderr, "RTS Not asserted! Aborting.\n");
 		close(fd);
 		exit(1);
