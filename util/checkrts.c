@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
+/* $Amigan: rsmeter/util/checkrts.c,v 1.2 2004/10/27 23:54:05 dcp1990 Exp $ */
 int main(int argc, char* argv[])
 {
 	int stat, fd;
