@@ -2,16 +2,16 @@
  * RSMeter - read from 22-168A series meters. See README for details.
  * By Dan Ponte
  */
-/* $Amigan: rsmeter/src/main.c,v 1.3 2004/10/27 23:13:32 dcp1990 Exp $ */
+/* $Amigan: rsmeter/src/main.c,v 1.4 2004/10/28 20:18:05 dcp1990 Exp $ */
 #include "rsmeter.h"
 short metertimeout = 12;
-char cvsid[] = "$Amigan: rsmeter/src/main.c,v 1.3 2004/10/27 23:13:32 dcp1990 Exp $";
+char cvsid[] = "$Amigan: rsmeter/src/main.c,v 1.4 2004/10/28 20:18:05 dcp1990 Exp $";
 char* logfi;
 time_t now, metertime = 0;
 void usage(char* whatcalled)
 {
 	
-	fprintf(stderr, "RSMeter v%s\n(C) Dan Ponte.\nUsage: %s [-c] [-l logfile] [-t timeout] -s <SerDevice>\n"
+	fprintf(stderr, "RSMeter v%s\n(C) Dan Ponte.\nUsage: %s [-c] [-l logfile] [-t timeout] <SerDevice>\n"
 			"\t-c: Hide cursor.\n"
 			"\t-l logfile: logs to file. Will APPEND, not write over.\n"
 			"\t-t timeout: Quit after timeout seconds of no response.\n",
@@ -21,12 +21,13 @@ void usage(char* whatcalled)
 int main(int argc, char* argv[])
 {
 	int ch, sset = 0, hidecurs;
-	while ((ch = getopt(argc, argv, "hcs:l:t:")) != -1)
+	while ((ch = getopt(argc, argv, "hcl:t:")) != -1)
 		switch (ch) {
-			case 's':
+/*			case 's':
 				dev = strdup(optarg);
 				sset = 1;
 				break;
+				*/
 			case 'c':
 				hidecurs = 1;
 				break;
@@ -44,6 +45,12 @@ int main(int argc, char* argv[])
 			default:
 				usage(argv[0]);
 		}
+	if(argv[optind] != NULL) {
+		dev = strdup(argv[optind]);
+		sset = 1;
+	} else {
+		usage(argv[0]);
+	}
 	if(!sset) usage(argv[0]);
 	setser(argv[0]);
 	initscr();
