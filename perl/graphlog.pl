@@ -6,7 +6,7 @@ use GD::Graph::colour qw( :files );
 GD::Graph::colour::read_rgb( "/usr/X11R6/lib/X11/rgb.txt");
 if($ARGV[0] eq '' or $ARGV[1] eq '')
 {
-print STDERR "Needs more arguments.\n";
+print STDERR "Needs more arguments.\n (@ARGV)";
 exit 1;
 }
 open(TLG, $ARGV[0]);
