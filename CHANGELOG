@@ -1,5 +1,5 @@
 This is the RSMeter changelog.
-
+$Amigan: rsmeter/CHANGELOG,v 1.2 2004/10/27 23:50:50 dcp1990 Exp $
 ~0.1~
 *Initial release
 *Screen handling is flaky
@@ -12,4 +12,6 @@ This is the RSMeter changelog.
 *Improved the device logic.
 *Registered sf.net project :)
 *Cleaned up the source
-
+~0.2.1~
+*Fixed bug about conflicting names for stat(2) (a global var was called it, and it broke __hash_open() on FreeBSD 5.3 during a initscr()).
+*Imported into cvs, added versions.
