@@ -2,18 +2,20 @@
  * RSMeter - read from 22-168A series meters. See README for details.
  * By Dan Ponte
  */
+/* $Amigan: rsmeter/src/main.c,v 1.3 2004/10/27 23:13:32 dcp1990 Exp $ */
 #include "rsmeter.h"
 short metertimeout = 12;
+char cvsid[] = "$Amigan: rsmeter/src/main.c,v 1.3 2004/10/27 23:13:32 dcp1990 Exp $";
 char* logfi;
 time_t now, metertime = 0;
 void usage(char* whatcalled)
 {
 	
-	fprintf(stderr, "RSMeter (C) Dan Ponte.\nUsage: %s [-c] [-l logfile] [-t timeout] -s <SerDevice>\n"
+	fprintf(stderr, "RSMeter v%s\n(C) Dan Ponte.\nUsage: %s [-c] [-l logfile] [-t timeout] -s <SerDevice>\n"
 			"\t-c: Hide cursor.\n"
 			"\t-l logfile: logs to file. Will APPEND, not write over.\n"
 			"\t-t timeout: Quit after timeout seconds of no response.\n",
-			whatcalled);
+			VERSION, whatcalled);
 	exit(-1);
 }
 int main(int argc, char* argv[])
@@ -58,7 +60,7 @@ int main(int argc, char* argv[])
 	nums = newwin(LPN + 3, (COLPN * 6) + 6, (LINES - (LPN + 3))/ 2, (COLS - (COLPN * 6)) / 2);
 	alph = newwin(1, 20, ((LINES - (LPN + 3)) / 2) -1, (COLS - (COLPN * 6)) / 2);
 	refresh();
-	printw("RSMeter (C)2004, Dan Ponte\n");
+	printw("RSMeter v%s. (C)2004, Dan Ponte\n", VERSION);
 	mvprintw(2, 1, "                   \n");
 	refresh();
 	mvprintw(LINES - 1, 1, "Keys: q - quit\t\t%s", logging ? "s - stop logging" : "" );

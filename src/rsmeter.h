@@ -10,6 +10,7 @@
 #include <time.h>
 #include <sys/select.h>
 #include <sys/ioctl.h>
+#define VERSION "0.2.1"
 int fd, siz, status, logging;
 FILE* logfil;
 struct tm tim;
