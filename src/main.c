@@ -2,10 +2,10 @@
  * RSMeter - read from 22-168A series meters. See README for details.
  * By Dan Ponte
  */
-/* $Amigan: rsmeter/src/main.c,v 1.4 2004/10/28 20:18:05 dcp1990 Exp $ */
+/* $Amigan: rsmeter/src/main.c,v 1.5 2004/11/29 03:47:31 dcp1990 Exp $ */
 #include "rsmeter.h"
 short metertimeout = 12;
-char cvsid[] = "$Amigan: rsmeter/src/main.c,v 1.4 2004/10/28 20:18:05 dcp1990 Exp $";
+char cvsid[] = "$Amigan: rsmeter/src/main.c,v 1.5 2004/11/29 03:47:31 dcp1990 Exp $";
 char* logfi;
 time_t now, metertime = 0;
 void usage(char* whatcalled)
@@ -80,8 +80,8 @@ int main(int argc, char* argv[])
 void setser(char* ourname)
 {
 	struct termios tr;
-	if(strcmp(dev, "/dev/cu") == NULL && strcmp(dev, "/dev/ttyS") == NULL && strcmp(dev, "/dev/ttyd")
-			== NULL) {
+	if(strcmp(dev, "/dev/cu") != 0 && strcmp(dev, "/dev/ttyS") != 0 && strcmp(dev, "/dev/ttyd")
+			!= 0) {
 		fprintf(stderr, "%s: %s not a serial device.\n", ourname, dev);
 		exit(1);
 	}
